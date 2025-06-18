@@ -377,24 +377,28 @@ function overwriteProxyGroups(params) {
 // 防止 dns 泄露
 function overwriteDns(params) {
     const cnDnsList = [
-        "https://223.5.5.5/dns-query"
+        "https://223.5.5.5/dns-query",
+        "233.5.5.5",
+        "1.1.1.1",
+        "8.8.8.8"
     ];
     const trustDnsList = [
         "https://1.0.0.1/dns-query",
-        "https://1.1.1.1/dns-query"
+        "https://1.1.1.1/dns-query",
+
     ];
 
     const dnsOptions = {
         enable: true,
         "prefer-h3": true, // 如果 DNS 服务器支持 DoH3 会优先使用 h3
         "default-nameserver": cnDnsList, // 用于解析其他 DNS 服务器、和节点的域名，必须为 IP, 可为加密 DNS。注意这个只用来解析节点和其他的 dns，其他网络请求不归他管
-        nameserver: trustDnsList, // 其他网络请求都归他管
+        //nameserver: trustDnsList, // 其他网络请求都归他管
 
         // 这个用于覆盖上面的 nameserver
         "nameserver-policy": {
             //[combinedUrls]: notionDns,
-            "geosite:cn": cnDnsList,
-            "geosite:geolocation-!cn": trustDnsList,
+            //"geosite:cn": cnDnsList,
+            //"geosite:geolocation-!cn": trustDnsList,
             // 如果你有一些内网使用的 DNS，应该定义在这里，多个域名用英文逗号分割
             // '+. 公司域名.com, www.4399.com, +.baidu.com': '10.0.0.1'
         },
