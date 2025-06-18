@@ -377,13 +377,11 @@ function overwriteProxyGroups(params) {
 // 防止 dns 泄露
 function overwriteDns(params) {
     const cnDnsList = [
-        "https://223.5.5.5/dns-query",
-        "https://1.12.12.12/dns-query",
+        "https://223.5.5.5/dns-query"
     ];
     const trustDnsList = [
         "https://1.0.0.1/dns-query",
-        "https://1.1.1.1/dns-query",
-        'quic://dns.cooluc.com',
+        "https://1.1.1.1/dns-query"
     ];
 
     const dnsOptions = {
