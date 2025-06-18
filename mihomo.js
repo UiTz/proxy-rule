@@ -411,7 +411,8 @@ function overwriteDns(params) {
     };
 
     // GitHub 加速前缀
-    const githubPrefix = "https://fastgh.lainbo.com/";
+    //const githubPrefix = "https://fastgh.lainbo.com/";
+    const githubPrefix = "";
 
     // GEO 数据 GitHub 资源原始下载地址
     const rawGeoxURLs = {
