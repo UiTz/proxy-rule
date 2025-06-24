@@ -212,7 +212,7 @@ function overwriteProxyGroups(params) {
         .map((item) => ({
             name: item.name,
             type: "url-test",
-            url: "http://www.gstatic.com/generate_204",
+            url: "http://www.google.com/generate_204",
             interval: 300,
             tolerance: 50,
             proxies: getProxiesByRegex(params, item.regex),
@@ -244,7 +244,7 @@ function overwriteProxyGroups(params) {
         {
             name: proxyName,
             type: "select",
-            url: "http://www.gstatic.com/generate_204",
+            url: "http://www.google.com/generate_204",
             icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/adjust.svg",
             proxies: [
                 "自动选择",
@@ -269,7 +269,7 @@ function overwriteProxyGroups(params) {
         {
             name: "负载均衡 (散列)",
             type: "load-balance",
-            url: "http://www.gstatic.com/generate_204",
+            url: "http://www.google.com/generate_204",
             icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/balance.svg",
             interval: 120,
             "max-failed-times": 3,
@@ -280,7 +280,7 @@ function overwriteProxyGroups(params) {
         {
             name: "负载均衡 (轮询)",
             type: "load-balance",
-            url: "http://www.gstatic.com/generate_204",
+            url: "http://www.google.com/generate_204",
             icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/merry_go.svg",
             interval: 120,
             "max-failed-times": 3,
@@ -291,7 +291,7 @@ function overwriteProxyGroups(params) {
         {
             name: "ALL - 自动选择",
             type: "url-test",
-            url: "http://www.gstatic.com/generate_204",
+            url: "http://www.google.com/generate_204",
             interval: 120,
             tolerance: 30,
             proxies: allProxies,
@@ -379,13 +379,12 @@ function overwriteDns(params) {
     const cnDnsList = [
         "https://223.5.5.5/dns-query",
         "233.5.5.5",
-        "1.1.1.1",
-        "8.8.8.8"
+        "223.6.6.6"
     ];
     const trustDnsList = [
         "https://1.0.0.1/dns-query",
         "https://1.1.1.1/dns-query",
-
+        "https://8.8.8.8/dns-query"
     ];
 
     const dnsOptions = {
@@ -397,8 +396,8 @@ function overwriteDns(params) {
         // 这个用于覆盖上面的 nameserver
         "nameserver-policy": {
             //[combinedUrls]: notionDns,
-            //"geosite:cn": cnDnsList,
-            //"geosite:geolocation-!cn": trustDnsList,
+            "geosite:cn": cnDnsList,
+            "geosite:geolocation-!cn": trustDnsList,
             // 如果你有一些内网使用的 DNS，应该定义在这里，多个域名用英文逗号分割
             // '+. 公司域名.com, www.4399.com, +.baidu.com': '10.0.0.1'
         },
