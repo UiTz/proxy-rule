@@ -32,7 +32,7 @@ function overwriteRules(params) {
         "RULE-SET,lancidr,DIRECT",
         "GEOIP,LAN,DIRECT,no-resolve",
         "GEOIP,CN,DIRECT,no-resolve",
-        //"RULE-SET,applications,DIRECT",
+        "RULE-SET,applications,DIRECT",
         "RULE-SET,openai,ChatGPT",
         "RULE-SET,claude,Claude",
         "RULE-SET,spotify,Spotify",
@@ -176,13 +176,13 @@ function overwriteRules(params) {
             path: "./ruleset/lancidr.yaml",
             interval: 86400,
         },
-        //applications: {
-        //    type: "http",
-        //    behavior: "classical",
-        //    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/applications.txt",
-        //    path: "./ruleset/applications.yaml",
-        //    interval: 86400,
-        //},
+        applications: {
+            type: "http",
+            behavior: "classical",
+            url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/applications.txt",
+            path: "./ruleset/applications.yaml",
+            interval: 86400,
+        },
     };
     params["rule-providers"] = ruleProviders;
     params["rules"] = rules;
@@ -212,7 +212,7 @@ function overwriteProxyGroups(params) {
         .map((item) => ({
             name: item.name,
             type: "url-test",
-            url: "http://www.google.com/generate_204",
+            url: "http://www.gstatic.com/generate_204",
             interval: 300,
             tolerance: 50,
             proxies: getProxiesByRegex(params, item.regex),
@@ -244,7 +244,7 @@ function overwriteProxyGroups(params) {
         {
             name: proxyName,
             type: "select",
-            url: "http://www.google.com/generate_204",
+            url: "http://www.gstatic.com/generate_204",
             icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/adjust.svg",
             proxies: [
                 "自动选择",
@@ -269,9 +269,9 @@ function overwriteProxyGroups(params) {
         {
             name: "负载均衡 (散列)",
             type: "load-balance",
-            url: "http://www.google.com/generate_204",
+            url: "http://www.gstatic.com/generate_204",
             icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/balance.svg",
-            interval: 120,
+            interval: 300,
             "max-failed-times": 3,
             strategy: "consistent-hashing",
             lazy: true,
@@ -280,9 +280,9 @@ function overwriteProxyGroups(params) {
         {
             name: "负载均衡 (轮询)",
             type: "load-balance",
-            url: "http://www.google.com/generate_204",
+            url: "http://www.gstatic.com/generate_204",
             icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/merry_go.svg",
-            interval: 120,
+            interval: 300,
             "max-failed-times": 3,
             strategy: "round-robin",
             lazy: true,
@@ -291,11 +291,11 @@ function overwriteProxyGroups(params) {
         {
             name: "ALL - 自动选择",
             type: "url-test",
-            url: "http://www.google.com/generate_204",
-            interval: 120,
-            tolerance: 30,
+            url: "http://www.gstatic.com/generate_204",
+            interval: 300,
+            tolerance: 50,
             proxies: allProxies,
-            hidden: false,
+            hidden: true,
         },
         {
             name: "自定义代理组 1",
@@ -356,7 +356,7 @@ function overwriteProxyGroups(params) {
         {
             name: "漏网之鱼",
             type: "select",
-            proxies: ["DIRECT", proxyName],
+            proxies: [proxyName, "DIRECT"],
             icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/fish.svg"
         },
         {
@@ -379,12 +379,11 @@ function overwriteDns(params) {
     const cnDnsList = [
         "https://223.5.5.5/dns-query",
         "233.5.5.5",
-        "223.6.6.6"
     ];
     const trustDnsList = [
         "https://1.0.0.1/dns-query",
         "https://1.1.1.1/dns-query",
-        "https://8.8.8.8/dns-query"
+
     ];
 
     const dnsOptions = {
