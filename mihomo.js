@@ -26,6 +26,7 @@ function overwriteRules(params) {
     const rules = [
         ...customRules,
         "RULE-SET,reject, 广告拦截",
+        "RULE-SET,Advertising, 广告拦截",
         "RULE-SET,direct,DIRECT",
         "RULE-SET,cncidr,DIRECT",
         "RULE-SET,private,DIRECT",
@@ -48,39 +49,41 @@ function overwriteRules(params) {
         "RULE-SET,proxy," + proxyName,
         "MATCH, 漏网之鱼",
     ];
+    const domainRules = {type: "http", behavior: "domain"};
     const ruleProviders = {
         reject: {
-            type: "http",
-            behavior: "domain",
+            ...domainRules,
             url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/reject.txt",
             path: "./ruleset/reject.yaml",
             interval: 86400,
         },
+        Advertising: {
+            ...domainRules,
+            url: "https://github.vuitz.cc/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Advertising/Advertising.yaml",
+            path: "./ruleset/Advertising.yaml",
+            interval: 86400,
+        },
         icloud: {
-            type: "http",
-            behavior: "domain",
-            url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/icloud.txt",
-            path: "./ruleset/icloud.yaml",
+            ...domainRules,
+            url: "https://github.vuitz.cc/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/icloud.mrs",
+            path: "./ruleset/icloud.mrs",
             interval: 86400,
         },
         apple: {
-            type: "http",
-            behavior: "domain",
-            url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/apple.txt",
-            path: "./ruleset/apple.yaml",
+            ...domainRules,
+            url: "https://github.vuitz.cc/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/apple.mrs",
+            path: "./ruleset/apple.mrs",
             interval: 86400,
         },
         google: {
-            type: "http",
-            behavior: "domain",
-            url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/google.txt",
-            path: "./ruleset/google.yaml",
+            ...domainRules,
+            url: "https://github.vuitz.cc/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.mrs",
+            path: "./ruleset/google.mrs",
             interval: 86400,
         },
         proxy: {
-            type: "http",
-            behavior: "domain",
-            url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/proxy.txt",
+            ...domainRules,
+            url: "https://github.vuitz.cc/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/proxy.txt",
             path: "./ruleset/proxy.yaml",
             interval: 86400,
         },
@@ -103,63 +106,48 @@ function overwriteRules(params) {
             path: "./ruleset/custom/Spotify.yaml"
         },
         reddit: {
-            type: "http",
-            behavior: "classical",
-            url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Reddit/Reddit.yaml",
-            path: "./ruleset/custom/reddit.yaml"
+            ...domainRules,
+            url: "https://github.vuitz.cc/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/reddit.mrs",
+            path: "./ruleset/custom/reddit.mrs"
         },
         speedtest: {
-            type: "http",
-            behavior: "classical",
-            url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Speedtest/Speedtest.yaml",
-            path: "./ruleset/custom/speedtest.yaml"
+            ...domainRules,
+            url: "https://github.vuitz.cc/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/speedtest.mrs",
+            path: "./ruleset/custom/speedtest.mrs"
         },
         telegramcidr: {
-            type: "http",
-            behavior: "ipcidr",
-            url: "https://fastly.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/telegramcidr.txt",
-            path: "./ruleset/custom/telegramcidr.yaml"
+            ...domainRules,
+            url: "https://github.vuitz.cc/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/telegram.mrs",
+            path: "./ruleset/custom/telegramcidr.mrs"
         },
         direct: {
-            type: "http",
-            behavior: "domain",
+            ...domainRules,
             url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/direct.txt",
             path: "./ruleset/direct.yaml",
             interval: 86400,
         },
         private: {
-            type: "http",
-            behavior: "domain",
+            ...domainRules,
             url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/private.txt",
             path: "./ruleset/private.yaml",
             interval: 86400,
         },
         gfw: {
-            type: "http",
-            behavior: "domain",
+            ...domainRules,
             url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt",
             path: "./ruleset/gfw.yaml",
             interval: 86400,
         },
         greatfire: {
-            type: "http",
-            behavior: "domain",
+            ...domainRules,
             url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/greatfire.txt",
             path: "./ruleset/greatfire.yaml",
             interval: 86400,
         },
         "tld-not-cn": {
-            type: "http",
-            behavior: "domain",
+            ...domainRules,
             url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/tld-not-cn.txt",
             path: "./ruleset/tld-not-cn.yaml",
-            interval: 86400,
-        },
-        telegramcidr: {
-            type: "http",
-            behavior: "ipcidr",
-            url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/telegramcidr.txt",
-            path: "./ruleset/telegramcidr.yaml",
             interval: 86400,
         },
         cncidr: {
@@ -212,11 +200,11 @@ function overwriteProxyGroups(params) {
         .map((item) => ({
             name: item.name,
             type: "url-test",
-            url: "http://www.gstatic.com/generate_204",
+            url: "http://www.google.com/generate_204",
             interval: 300,
             tolerance: 50,
             proxies: getProxiesByRegex(params, item.regex),
-            hidden: true,
+            hidden: false,
         }))
         .filter((item) => item.proxies.length > 0);
 
@@ -244,7 +232,7 @@ function overwriteProxyGroups(params) {
         {
             name: proxyName,
             type: "select",
-            url: "http://www.gstatic.com/generate_204",
+            url: "http://www.google.com/generate_204",
             icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/adjust.svg",
             proxies: [
                 "自动选择",
@@ -269,7 +257,7 @@ function overwriteProxyGroups(params) {
         {
             name: "负载均衡 (散列)",
             type: "load-balance",
-            url: "http://www.gstatic.com/generate_204",
+            url: "http://www.google.com/generate_204",
             icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/balance.svg",
             interval: 300,
             "max-failed-times": 3,
@@ -280,7 +268,7 @@ function overwriteProxyGroups(params) {
         {
             name: "负载均衡 (轮询)",
             type: "load-balance",
-            url: "http://www.gstatic.com/generate_204",
+            url: "http://www.google.com/generate_204",
             icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/merry_go.svg",
             interval: 300,
             "max-failed-times": 3,
@@ -291,7 +279,7 @@ function overwriteProxyGroups(params) {
         {
             name: "ALL - 自动选择",
             type: "url-test",
-            url: "http://www.gstatic.com/generate_204",
+            url: "http://www.google.com/generate_204",
             interval: 300,
             tolerance: 50,
             proxies: allProxies,
@@ -320,8 +308,11 @@ function overwriteProxyGroups(params) {
         },
         {
             name: "Reddit",
-            type: "select",
+            type: "url-test",
+            interval: 300,
+            tolerance: 50,
             url: "https://www.reddit.com",
+            "expected-status": 200,
             proxies: [proxyName, "HK - 自动选择", "TW - 自动选择", "SG - 自动选择", "KR - 自动选择", "JP - 自动选择", "US - 自动选择", "其它 - 自动选择", "HK - 手工选择", "TW - 手工选择", "SG - 手工选择", "KR - 手工选择", "JP - 手工选择", "US - 手工选择"],
             // "include-all": true,
             icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/reddit.svg"
@@ -335,8 +326,11 @@ function overwriteProxyGroups(params) {
         },
         {
             name: "ChatGPT",
-            type: "select",
+            type: "url-test",
+            interval: 300,
+            tolerance: 50,
             url: "https://chatgpt.com",
+            "expected-status": 200,
             proxies: [proxyName, "HK - 自动选择", "TW - 自动选择", "SG - 自动选择", "KR - 自动选择", "JP - 自动选择", "US - 自动选择", "其它 - 自动选择", "HK - 手工选择", "TW - 手工选择", "SG - 手工选择", "KR - 手工选择", "JP - 手工选择", "US - 手工选择"],
             // "include-all": true,
             icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/chatgpt.svg"
@@ -381,6 +375,7 @@ function overwriteDns(params) {
     const cnDnsList = [
         "https://223.5.5.5/dns-query",
         "233.5.5.5",
+        "system"
     ];
     const trustDnsList = [
         "tls://1.0.0.1",
@@ -391,14 +386,15 @@ function overwriteDns(params) {
 
     const dnsOptions = {
         enable: true,
-        "prefer-h3": false, // 如果 DNS 服务器支持 DoH3 会优先使用 h3
+        "prefer-h3": true, // 如果 DNS 服务器支持 DoH3 会优先使用 h3
         "default-nameserver": cnDnsList, // 用于解析其他 DNS 服务器、和节点的域名，必须为 IP, 可为加密 DNS。注意这个只用来解析节点和其他的 dns，其他网络请求不归他管
         //nameserver: trustDnsList, // 其他网络请求都归他管
-
+        "cache-algorithm": "arc",
         // 这个用于覆盖上面的 nameserver
         "nameserver-policy": {
             //[combinedUrls]: notionDns,
-            //"geosite:cn": cnDnsList,
+            "geosite:cn": cnDnsList,
+            "geo:cn": cnDnsList,
             //"geosite:geolocation-!cn": trustDnsList,
             // 如果你有一些内网使用的 DNS，应该定义在这里，多个域名用英文逗号分割
             // '+. 公司域名.com, www.4399.com, +.baidu.com': '10.0.0.1'
@@ -416,8 +412,8 @@ function overwriteDns(params) {
     };
 
     // GitHub 加速前缀
-    //const githubPrefix = "https://fastgh.lainbo.com/";
-    const githubPrefix = "";
+    const githubPrefix = "https://fastgh.lainbo.com/";
+    // const githubPrefix = "";
 
     // GEO 数据 GitHub 资源原始下载地址
     const rawGeoxURLs = {
@@ -452,6 +448,9 @@ function overwriteDns(params) {
                 HTTP: {
                     ports: [80, "8080-8880"],
                     "override-destination": true,
+                },
+                QUIC: {
+                    ports: [443, 8443],
                 },
             },
         },
