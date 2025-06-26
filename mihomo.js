@@ -20,6 +20,10 @@ function overwriteRules(params) {
         //"DOMAIN-SUFFIX,gstatic.com, 自定义代理组 1",
         // 示例 3 ：使用 自定义代理组 2
         //"DOMAIN-SUFFIX,googleapis.com, 自定义代理组 2",
+        // ssh连接走直连
+        "DOMAIN-SUFFIX,v.vuitz.cc,DIRECT",
+        "DOMAIN-SUFFIX,uitz.cc,DIRECT",
+        "DST-PORT,22,DIRECT"
     ];
 
 
@@ -375,7 +379,6 @@ function overwriteDns(params) {
     const cnDnsList = [
         "https://223.5.5.5/dns-query",
         "233.5.5.5",
-        "system"
     ];
     const trustDnsList = [
         "tls://1.0.0.1",
@@ -414,7 +417,7 @@ function overwriteDns(params) {
             "geoip:cn",
             "geosite:google",
             "geosite:apple",
-            "uitz.cc"
+            "*.uitz.cc"
         ],
     };
 
