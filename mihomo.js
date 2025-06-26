@@ -414,8 +414,6 @@ function overwriteDns(params) {
             "geoip:cn",
             "geosite:google",
             "geosite:apple",
-            "geosite:icloud",
-            "geosite:telegramcidr",
             "uitz.cc"
         ],
     };
