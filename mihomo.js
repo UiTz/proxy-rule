@@ -33,7 +33,7 @@ function overwriteRules(params) {
         "RULE-SET,lancidr,DIRECT",
         "GEOIP,LAN,DIRECT,no-resolve",
         "GEOIP,CN,DIRECT,no-resolve",
-        "RULE-SET,applications,DIRECT",
+        //"RULE-SET,applications,DIRECT",
         "RULE-SET,openai,ChatGPT",
         "RULE-SET,claude,Claude",
         "RULE-SET,spotify,Spotify",
