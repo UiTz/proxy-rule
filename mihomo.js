@@ -21,6 +21,10 @@ function overwriteRules(params) {
         // 示例 3 ：使用 自定义代理组 2
         //"DOMAIN-SUFFIX,googleapis.com, 自定义代理组 2",
         // ssh连接走直连
+        "DOMAIN-SUFFIX, fengkongcloud.com, 小红书",
+        "DOMAIN-SUFFIX, xiaohongshu.com, 小红书",
+        "DOMAIN-SUFFIX, douyinvod.com, 抖音",
+        "DOMAIN-SUFFIX, amemv.com, 抖音",
     ];
 
 
@@ -40,6 +44,7 @@ function overwriteRules(params) {
         "RULE-SET,spotify,Spotify",
         "RULE-SET,speedtest,Speedtest",
         "RULE-SET,reddit,Reddit",
+        
         "RULE-SET,telegramcidr,电报消息,no-resolve",
         "RULE-SET,tld-not-cn," + proxyName,
         "RULE-SET,google," + proxyName,
@@ -229,6 +234,8 @@ function overwriteProxyGroups(params) {
         }))
         .filter((item) => item.proxies.length > 0);
 
+    const GPTproxy = getProxiesByRegex(params, /GPT/)
+    
     const groups = [
         {
             name: proxyName,
@@ -314,9 +321,24 @@ function overwriteProxyGroups(params) {
             tolerance: 50,
             url: "https://www.reddit.com",
             "expected-status": "200",
-            proxies: [proxyName, "HK - 自动选择", "TW - 自动选择", "SG - 自动选择", "KR - 自动选择", "JP - 自动选择", "US - 自动选择", "其它 - 自动选择", "HK - 手工选择", "TW - 手工选择", "SG - 手工选择", "KR - 手工选择", "JP - 手工选择", "US - 手工选择"],
+            // proxies: [proxyName, "HK - 自动选择", "TW - 自动选择", "SG - 自动选择", "KR - 自动选择", "JP - 自动选择", "US - 自动选择", "其它 - 自动选择", "HK - 手工选择", "TW - 手工选择", "SG - 手工选择", "KR - 手工选择", "JP - 手工选择", "US - 手工选择"],
+            proxies: [...GPTproxy],
             // "include-all": true,
             icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/reddit.svg"
+        },
+        {
+            name: "小红书",
+            type: "select",
+            url: "http://xiaohongshu.com",
+            proxies: ["DIRECT", ...allProxies],
+            icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Fries.png"
+        },
+        {
+            name: "抖音",
+            type: "select",
+            url: "http://amemv.com",
+            proxies: ["DIRECT", ...allProxies],
+            icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/TikTok_1.png"
         },
         {
             name: "Speedtest",
@@ -330,17 +352,21 @@ function overwriteProxyGroups(params) {
             type: "url-test",
             interval: 300,
             tolerance: 50,
-            url: "https://chatgpt.com",
+            url: "http://chatgpt.com",
             "expected-status": "200",
             // proxies: [proxyName, "HK - 自动选择", "TW - 自动选择", "SG - 自动选择", "KR - 自动选择", "JP - 自动选择", "US - 自动选择", "其它 - 自动选择", "HK - 手工选择", "TW - 手工选择", "SG - 手工选择", "KR - 手工选择", "JP - 手工选择", "US - 手工选择"],
-            proxies: getProxiesByRegex(params, /GPT/),
+            proxies: [...GPTproxy],
             // "include-all": true,
             icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/chatgpt.svg"
         },
         {
             name: "Claude",
-            type: "select",
-            proxies: [proxyName, "HK - 自动选择", "TW - 自动选择", "SG - 自动选择", "KR - 自动选择", "JP - 自动选择", "US - 自动选择", "其它 - 自动选择", "HK - 手工选择", "TW - 手工选择", "SG - 手工选择", "KR - 手工选择", "JP - 手工选择", "US - 手工选择"],
+            type: "url-test",
+            interval: 300,
+            tolerance: 50,
+            url: "http://claude.ai",
+            // proxies: [proxyName, "HK - 自动选择", "TW - 自动选择", "SG - 自动选择", "KR - 自动选择", "JP - 自动选择", "US - 自动选择", "其它 - 自动选择", "HK - 手工选择", "TW - 手工选择", "SG - 手工选择", "KR - 手工选择", "JP - 手工选择", "US - 手工选择"],
+            proxies: [...GPTproxy],
             // "include-all": true,
             icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/claude.svg"
         },
