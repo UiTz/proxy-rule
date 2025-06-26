@@ -21,16 +21,13 @@ function overwriteRules(params) {
         // 示例 3 ：使用 自定义代理组 2
         //"DOMAIN-SUFFIX,googleapis.com, 自定义代理组 2",
         // ssh连接走直连
-        "DOMAIN-SUFFIX,v.vuitz.cc,DIRECT",
-        "DOMAIN-SUFFIX,uitz.cc,DIRECT",
-        "DST-PORT,22,DIRECT"
     ];
 
 
     const rules = [
         ...customRules,
-        "RULE-SET,reject, 广告拦截",
-        "RULE-SET,Advertising, 广告拦截",
+        "RULE-SET,reject, ⛔广告拦截",
+        "RULE-SET,Advertising, ⛔广告拦截",
         "RULE-SET,direct,DIRECT",
         "RULE-SET,cncidr,DIRECT",
         "RULE-SET,private,DIRECT",
@@ -51,7 +48,7 @@ function overwriteRules(params) {
         "RULE-SET,gfw," + proxyName,
         "RULE-SET,greatfire," + proxyName,
         "RULE-SET,proxy," + proxyName,
-        "MATCH, 漏网之鱼",
+        "MATCH, 🐟漏网之鱼",
     ];
     const domainRules = { type: "http", behavior: "domain" };
     const ruleProviders = {
@@ -241,8 +238,8 @@ function overwriteProxyGroups(params) {
             proxies: [
                 "自动选择",
                 "手动选择",
-                "负载均衡 (散列)",
-                "负载均衡 (轮询)",
+                "🔀负载均衡(散列)",
+                "🔁负载均衡(轮询)",
                 "DIRECT",
             ],
         },
@@ -259,7 +256,7 @@ function overwriteProxyGroups(params) {
             proxies: ["ALL - 自动选择"],
         },
         {
-            name: "负载均衡 (散列)",
+            name: "🔀负载均衡(散列)",
             type: "load-balance",
             url: "http://www.google.com/generate_204",
             icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/balance.svg",
@@ -270,7 +267,7 @@ function overwriteProxyGroups(params) {
             proxies: allProxies,
         },
         {
-            name: "负载均衡 (轮询)",
+            name: "🔁负载均衡(轮询)",
             type: "load-balance",
             url: "http://www.google.com/generate_204",
             icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/merry_go.svg",
@@ -354,13 +351,13 @@ function overwriteProxyGroups(params) {
             icon: "https://storage.googleapis.com/spotifynewsroom-jp.appspot.com/1/2020/12/Spotify_Icon_CMYK_Green.png"
         },
         {
-            name: "漏网之鱼",
+            name: "🐟漏网之鱼",
             type: "select",
             proxies: [proxyName, "DIRECT"],
             icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/fish.svg"
         },
         {
-            name: "广告拦截",
+            name: "⛔广告拦截",
             type: "select",
             proxies: ["REJECT", "DIRECT", proxyName],
             icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/block.svg"
