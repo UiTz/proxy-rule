@@ -412,14 +412,11 @@ function overwriteDns(params) {
         "fake-ip-filter": [
             "geosite:cn",
             "geoip:cn",
-            "geosite:private",
-            "geosite:lancidr",
             "geosite:google",
             "geosite:apple",
             "geosite:icloud",
-            "geosite:reddit",
-            "geosite:speedtest",
             "geosite:telegramcidr",
+            "uitz.cc"
         ],
     };
 
