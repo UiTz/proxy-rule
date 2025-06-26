@@ -420,7 +420,6 @@ function overwriteDns(params) {
             "geosite:reddit",
             "geosite:speedtest",
             "geosite:telegramcidr",
-            "uitz.cc"
         ],
     };
 
