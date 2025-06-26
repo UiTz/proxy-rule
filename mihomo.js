@@ -321,6 +321,7 @@ function overwriteProxyGroups(params) {
         {
             name: "Reddit",
             type: "select",
+            url: "https://www.reddit.com",
             proxies: [proxyName, "HK - 自动选择", "TW - 自动选择", "SG - 自动选择", "KR - 自动选择", "JP - 自动选择", "US - 自动选择", "其它 - 自动选择", "HK - 手工选择", "TW - 手工选择", "SG - 手工选择", "KR - 手工选择", "JP - 手工选择", "US - 手工选择"],
             // "include-all": true,
             icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/reddit.svg"
@@ -335,6 +336,7 @@ function overwriteProxyGroups(params) {
         {
             name: "ChatGPT",
             type: "select",
+            url: "https://chatgpt.com",
             proxies: [proxyName, "HK - 自动选择", "TW - 自动选择", "SG - 自动选择", "KR - 自动选择", "JP - 自动选择", "US - 自动选择", "其它 - 自动选择", "HK - 手工选择", "TW - 手工选择", "SG - 手工选择", "KR - 手工选择", "JP - 手工选择", "US - 手工选择"],
             // "include-all": true,
             icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/chatgpt.svg"
@@ -368,7 +370,7 @@ function overwriteProxyGroups(params) {
     ];
 
     autoProxyGroups.length &&
-        groups[2].proxies.unshift(...autoProxyGroups.map((item) => item.name));
+        groups[2].proxies.push(...autoProxyGroups.map((item) => item.name));
     groups.push(...autoProxyGroups);
     groups.push(...manualProxyGroupsConfig);
     params["proxy-groups"] = groups;
@@ -381,26 +383,27 @@ function overwriteDns(params) {
         "233.5.5.5",
     ];
     const trustDnsList = [
+        "tls://1.0.0.1",
+        "tls://8.8.8.8",
         "https://1.0.0.1/dns-query",
         "https://1.1.1.1/dns-query",
-
     ];
 
     const dnsOptions = {
         enable: true,
-        "prefer-h3": true, // 如果 DNS 服务器支持 DoH3 会优先使用 h3
+        "prefer-h3": false, // 如果 DNS 服务器支持 DoH3 会优先使用 h3
         "default-nameserver": cnDnsList, // 用于解析其他 DNS 服务器、和节点的域名，必须为 IP, 可为加密 DNS。注意这个只用来解析节点和其他的 dns，其他网络请求不归他管
         //nameserver: trustDnsList, // 其他网络请求都归他管
 
         // 这个用于覆盖上面的 nameserver
         "nameserver-policy": {
             //[combinedUrls]: notionDns,
-            "geosite:cn": cnDnsList,
-            "geosite:geolocation-!cn": trustDnsList,
+            //"geosite:cn": cnDnsList,
+            //"geosite:geolocation-!cn": trustDnsList,
             // 如果你有一些内网使用的 DNS，应该定义在这里，多个域名用英文逗号分割
             // '+. 公司域名.com, www.4399.com, +.baidu.com': '10.0.0.1'
         },
-        fallback: trustDnsList,
+        //fallback: trustDnsList,
         "fallback-filter": {
             geoip: true,
             // 除了 geoip-code 配置的国家 IP, 其他的 IP 结果会被视为污染 geoip-code 配置的国家的结果会直接采用，否则将采用 fallback 结果
