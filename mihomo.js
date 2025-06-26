@@ -49,7 +49,7 @@ function overwriteRules(params) {
         "RULE-SET,proxy," + proxyName,
         "MATCH, 漏网之鱼",
     ];
-    const domainRules = {type: "http", behavior: "domain"};
+    const domainRules = { type: "http", behavior: "domain" };
     const ruleProviders = {
         reject: {
             ...domainRules,
@@ -409,22 +409,19 @@ function overwriteDns(params) {
             ipcidr: ["240.0.0.0/4"],
             domain: ["+.google.com", "+.facebook.com", "+.youtube.com"],
         },
-        "fake-ip-filter": {
-            // 这个用于覆盖上面的 nameserver
-            domain: [
-                "geosite:cn",
-                "geoip:cn",
-                "geosite:private",
-                "geosite:lancidr",
-                "geosite:google",
-                "geosite:apple",
-                "geosite:icloud",
-                "geosite:reddit",
-                "geosite:speedtest",
-                "geosite:telegramcidr",
-                "uitz.cc"
-            ],
-        }
+        "fake-ip-filter": [
+            "geosite:cn",
+            "geoip:cn",
+            "geosite:private",
+            "geosite:lancidr",
+            "geosite:google",
+            "geosite:apple",
+            "geosite:icloud",
+            "geosite:reddit",
+            "geosite:speedtest",
+            "geosite:telegramcidr",
+            "uitz.cc"
+        ],
     };
 
     // GitHub 加速前缀
