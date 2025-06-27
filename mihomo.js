@@ -46,6 +46,7 @@ function overwriteRules(params) {
         "RULE-SET,spotify,Spotify",
         "RULE-SET,speedtest,Speedtest",
         "RULE-SET,reddit,Reddit",
+        "RULE-SET,tiktok,TikTok",
         "RULE-SET,telegramcidr,电报消息,no-resolve",
         "RULE-SET,tldnotcn," + proxyName,
         "RULE-SET,google," + proxyName,
@@ -166,6 +167,12 @@ function overwriteRules(params) {
             behavior: "classical",
             url: `${githubProxy}https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/YouTube/YouTube.yaml`,
             path: "./ruleset/custom/youtube.yaml",
+        },
+        tiktok: {
+            type: "http",
+            behavior: "classical",
+            url: `${githubProxy}https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/TikTok/TikTok.yaml`,
+            path: "./ruleset/custom/tiktok.yaml",
         },
         claude: {
             type: "http",
@@ -403,6 +410,13 @@ function overwriteProxyGroups(params) {
             url: "http://youtube.com",
             proxies: allProxies,
             icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/youtube.svg"
+        },
+        {
+            name: "TikTok",
+            type: "select",
+            url: "http://tiktok.com",
+            proxies: [proxyName, "HK - 自动选择", "TW - 自动选择", "SG - 自动选择", "KR - 自动选择", "JP - 自动选择", "US - 自动选择", "其它 - 自动选择", "HK - 手工选择", "TW - 手工选择", "SG - 手工选择", "KR - 手工选择", "JP - 手工选择", "US - 手工选择"],
+            icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/tiktok.svg"
         },
         {
             name: "Claude",
