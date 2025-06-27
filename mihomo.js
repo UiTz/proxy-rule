@@ -41,6 +41,8 @@ function overwriteRules(params) {
         //"RULE-SET,applications,DIRECT",
         "RULE-SET,openai,ChatGPT",
         "RULE-SET,claude,Claude",
+        "RULE-SET,youtube,YouTube",
+        "RULE-SET,github,GitHub",
         "RULE-SET,spotify,Spotify",
         "RULE-SET,speedtest,Speedtest",
         "RULE-SET,reddit,Reddit",
@@ -132,6 +134,11 @@ function overwriteRules(params) {
             url: `${githubProxy}https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.mrs`,
             path: "./ruleset/google.mrs",
         },
+        github: {
+            ...domainRules,
+            url: `${githubProxy}https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GitHub/GitHub.yaml`,
+            path: "./ruleset/custom/github.yaml",
+        },
         spotify: {
             type: "http",
             behavior: "classical",
@@ -153,6 +160,12 @@ function overwriteRules(params) {
             behavior: "classical",
             url: "https://fastly.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/OpenAI/OpenAI.yaml",
             path: "./ruleset/custom/openai.yaml",
+        },
+        youtube: {
+            type: "http",
+            behavior: "classical",
+            url: `${githubProxy}https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/YouTube/YouTube.yaml`,
+            path: "./ruleset/custom/youtube.yaml",
         },
         claude: {
             type: "http",
@@ -372,6 +385,24 @@ function overwriteProxyGroups(params) {
             proxies: [...GPTProxyRegex],
             // "include-all": true,
             icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/chatgpt.svg"
+        },
+        {
+            name: "GitHub",
+            type: "url-test",
+            interval: 120,
+            tolerance: 20,
+            url: "http://github.com",
+            proxies: allProxies,
+            icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/github.svg"
+        },
+        {
+            name: "YouTube",
+            type: "url-test",
+            interval: 120,
+            tolerance: 20,
+            url: "http://youtube.com",
+            proxies: allProxies,
+            icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/youtube.svg"
         },
         {
             name: "Claude",
