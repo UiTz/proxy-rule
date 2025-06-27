@@ -122,7 +122,8 @@ function overwriteRules(params) {
             path: "./ruleset/custom/speedtest.mrs"
         },
         telegramcidr: {
-            ...domainRules,
+            type: "http",
+            behavior: "ipcidr",
             url: "https://github.vuitz.cc/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/telegram.mrs",
             path: "./ruleset/custom/telegramcidr.mrs"
         },
@@ -241,7 +242,7 @@ function overwriteProxyGroups(params) {
             name: proxyName,
             type: "select",
             url: "http://www.google.com/generate_204",
-            icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/adjust.svg",
+            icon: "https://raw.githubusercontent.com/fmz200/wool_scripts/main/icons/Twoandz9/Xray.png",
             proxies: [
                 "自动选择",
                 "手动选择",
@@ -259,7 +260,7 @@ function overwriteProxyGroups(params) {
         {
             name: "自动选择",
             type: "select",
-            icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/speed.svg",
+            icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Auto.png",
             proxies: ["ALL - 自动选择"],
         },
         {
