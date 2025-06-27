@@ -288,8 +288,8 @@ function overwriteProxyGroups(params) {
             name: "ALL - 自动选择",
             type: "url-test",
             url: "http://www.google.com/generate_204",
-            interval: 300,
-            tolerance: 50,
+            interval: 120,
+            tolerance: 20,
             proxies: allProxies,
             hidden: true,
         },
@@ -317,8 +317,8 @@ function overwriteProxyGroups(params) {
         {
             name: "Reddit",
             type: "url-test",
-            interval: 300,
-            tolerance: 50,
+            interval: 120,
+            tolerance: 20,
             url: "https://www.reddit.com",
             "expected-status": "200",
             // proxies: [proxyName, "HK - 自动选择", "TW - 自动选择", "SG - 自动选择", "KR - 自动选择", "JP - 自动选择", "US - 自动选择", "其它 - 自动选择", "HK - 手工选择", "TW - 手工选择", "SG - 手工选择", "KR - 手工选择", "JP - 手工选择", "US - 手工选择"],
@@ -350,8 +350,8 @@ function overwriteProxyGroups(params) {
         {
             name: "ChatGPT",
             type: "url-test",
-            interval: 300,
-            tolerance: 50,
+            interval: 120,
+            tolerance: 20,
             url: "http://chatgpt.com",
             "expected-status": "200",
             // proxies: [proxyName, "HK - 自动选择", "TW - 自动选择", "SG - 自动选择", "KR - 自动选择", "JP - 自动选择", "US - 自动选择", "其它 - 自动选择", "HK - 手工选择", "TW - 手工选择", "SG - 手工选择", "KR - 手工选择", "JP - 手工选择", "US - 手工选择"],
@@ -446,7 +446,7 @@ function overwriteDns(params) {
     };
 
     // GitHub 加速前缀
-    const githubPrefix = "https://fastgh.lainbo.com/";
+    const githubPrefix = "https://github.vuitz.cc/";
     // const githubPrefix = "";
 
     // GEO 数据 GitHub 资源原始下载地址
