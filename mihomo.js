@@ -45,7 +45,7 @@ function overwriteRules(params) {
         "RULE-SET,speedtest,Speedtest",
         "RULE-SET,reddit,Reddit",
         "RULE-SET,telegramcidr,电报消息,no-resolve",
-        "RULE-SET,tld-not-cn," + proxyName,
+        "RULE-SET,tldnotcn," + proxyName,
         "RULE-SET,google," + proxyName,
         "RULE-SET,icloud," + proxyName,
         "RULE-SET,apple," + proxyName,
@@ -94,7 +94,7 @@ function overwriteRules(params) {
         tldnotcn: {
             ...domainRules,
             url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/tld-not-cn.txt",
-            path: "./ruleset/tld-not-cn.yaml",
+            path: "./ruleset/tldnotcn.yaml",
         },
         gfw: {
             ...domainRules,
