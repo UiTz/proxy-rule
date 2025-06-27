@@ -332,7 +332,7 @@ function overwriteProxyGroups(params) {
             interval: 120,
             tolerance: 20,
             url: "https://www.reddit.com",
-            "expected-status": "200",
+            // "expected-status": "200",
             // proxies: [proxyName, "HK - 自动选择", "TW - 自动选择", "SG - 自动选择", "KR - 自动选择", "JP - 自动选择", "US - 自动选择", "其它 - 自动选择", "HK - 手工选择", "TW - 手工选择", "SG - 手工选择", "KR - 手工选择", "JP - 手工选择", "US - 手工选择"],
             proxies: [...GPTProxyRegex],
             // "include-all": true,
@@ -342,6 +342,7 @@ function overwriteProxyGroups(params) {
             name: "小红书",
             type: "select",
             url: "http://xiaohongshu.com",
+            interval: 300,
             proxies: ["DIRECT", ...allProxies],
             icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Fries.png"
         },
@@ -349,6 +350,7 @@ function overwriteProxyGroups(params) {
             name: "抖音",
             type: "select",
             url: "http://amemv.com",
+            interval: 300,
             proxies: ["DIRECT", ...allProxies],
             icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/TikTok_1.png"
         },
@@ -365,7 +367,7 @@ function overwriteProxyGroups(params) {
             interval: 120,
             tolerance: 20,
             url: "http://chatgpt.com",
-            "expected-status": "200",
+            // "expected-status": "200",
             // proxies: [proxyName, "HK - 自动选择", "TW - 自动选择", "SG - 自动选择", "KR - 自动选择", "JP - 自动选择", "US - 自动选择", "其它 - 自动选择", "HK - 手工选择", "TW - 手工选择", "SG - 手工选择", "KR - 手工选择", "JP - 手工选择", "US - 手工选择"],
             proxies: [...GPTProxyRegex],
             // "include-all": true,
@@ -414,7 +416,6 @@ function overwriteProxyGroups(params) {
 function overwriteDns(params) {
     const cnDnsList = [
         "https://223.5.5.5/dns-query",
-        "223.5.5.5",
     ];
     const trustDnsList = [
         "tls://1.0.0.1:853",
