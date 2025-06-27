@@ -470,7 +470,7 @@ function overwriteDns(params) {
             // 如果你有一些内网使用的 DNS，应该定义在这里，多个域名用英文逗号分割
             // '+. 公司域名.com, www.4399.com, +.baidu.com': '10.0.0.1'
         },
-        fallback: trustDnsList,
+        //fallback: trustDnsList,
         "fallback-filter": {
             geoip: true,
             // 除了 geoip-code 配置的国家 IP, 其他的 IP 结果会被视为污染 geoip-code 配置的国家的结果会直接采用，否则将采用 fallback 结果
