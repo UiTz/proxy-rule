@@ -266,7 +266,7 @@ function overwriteProxyGroups(params) {
         }))
         .filter((item) => item.proxies.length > 0);
 
-    const GPTProxyRegex = getProxiesByRegex(params, /GPT/)
+    const GPTProxyRegex = getProxiesByRegex(params, /^(?!.*?(香港|HK|Hong|🇭🇰)).*$/)
 
     const groups = [
         {
