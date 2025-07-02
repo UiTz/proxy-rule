@@ -350,7 +350,7 @@ function overwriteProxyGroups(params) {
         {
             name: "Reddit",
             type: "url-test",
-            interval: 120,
+            interval: 600,
             tolerance: 20,
             url: "https://www.reddit.com",
             lazy: false,
@@ -364,7 +364,7 @@ function overwriteProxyGroups(params) {
             name: "小红书",
             type: "select",
             url: "http://xiaohongshu.com",
-            interval: 300,
+            interval: 600,
             lazy: false, 
             proxies: ["DIRECT", ...allProxies],
             icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Fries.png"
@@ -373,7 +373,7 @@ function overwriteProxyGroups(params) {
             name: "抖音",
             type: "select",
             url: "http://amemv.com",
-            interval: 300,
+            interval: 600,
             lazy: false,
             proxies: ["DIRECT", ...allProxies],
             icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/TikTok_1.png"
@@ -388,7 +388,7 @@ function overwriteProxyGroups(params) {
         {
             name: "ChatGPT",
             type: "url-test",
-            interval: 120,
+            interval: 600,
             tolerance: 20,
             url: "http://chatgpt.com",
             lazy: false,
@@ -401,7 +401,7 @@ function overwriteProxyGroups(params) {
         {
             name: "GitHub",
             type: "url-test",
-            interval: 120,
+            interval: 600,
             tolerance: 20,
             url: "http://github.com",
             lazy: false,
@@ -411,7 +411,7 @@ function overwriteProxyGroups(params) {
         {
             name: "YouTube",
             type: "url-test",
-            interval: 120,
+            interval: 600,
             tolerance: 20,
             url: "http://youtube.com",
             lazy: false,
@@ -429,7 +429,7 @@ function overwriteProxyGroups(params) {
         {
             name: "Claude",
             type: "url-test",
-            interval: 300,
+            interval: 600,
             tolerance: 50,
             url: "http://claude.ai",
             lazy: false,
