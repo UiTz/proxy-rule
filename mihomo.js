@@ -266,7 +266,8 @@ function overwriteProxyGroups(params) {
         }))
         .filter((item) => item.proxies.length > 0);
 
-    const GPTProxyRegex = getProxiesByRegex(params, /^(?!.*?(香港|HK|Hong|🇭🇰)).*$/)
+    // const GPTProxyRegex = getProxiesByRegex(params, /^(?!.*?(香港|HK|Hong|🇭🇰)).*$/)
+    const GPTProxyRegex = getProxiesByRegex(params, /GPT/)
 
     const groups = [
         {
@@ -352,6 +353,7 @@ function overwriteProxyGroups(params) {
             interval: 120,
             tolerance: 20,
             url: "https://www.reddit.com",
+            lazy: false,
             // "expected-status": "200",
             // proxies: [proxyName, "HK - 自动选择", "TW - 自动选择", "SG - 自动选择", "KR - 自动选择", "JP - 自动选择", "US - 自动选择", "其它 - 自动选择", "HK - 手工选择", "TW - 手工选择", "SG - 手工选择", "KR - 手工选择", "JP - 手工选择", "US - 手工选择"],
             proxies: [...allProxies],
@@ -363,6 +365,7 @@ function overwriteProxyGroups(params) {
             type: "select",
             url: "http://xiaohongshu.com",
             interval: 300,
+            lazy: false, 
             proxies: ["DIRECT", ...allProxies],
             icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Fries.png"
         },
@@ -371,6 +374,7 @@ function overwriteProxyGroups(params) {
             type: "select",
             url: "http://amemv.com",
             interval: 300,
+            lazy: false,
             proxies: ["DIRECT", ...allProxies],
             icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/TikTok_1.png"
         },
@@ -387,6 +391,7 @@ function overwriteProxyGroups(params) {
             interval: 120,
             tolerance: 20,
             url: "http://chatgpt.com",
+            lazy: false,
             // "expected-status": "200",
             // proxies: [proxyName, "HK - 自动选择", "TW - 自动选择", "SG - 自动选择", "KR - 自动选择", "JP - 自动选择", "US - 自动选择", "其它 - 自动选择", "HK - 手工选择", "TW - 手工选择", "SG - 手工选择", "KR - 手工选择", "JP - 手工选择", "US - 手工选择"],
             proxies: [...GPTProxyRegex],
@@ -399,6 +404,7 @@ function overwriteProxyGroups(params) {
             interval: 120,
             tolerance: 20,
             url: "http://github.com",
+            lazy: false,
             proxies: allProxies,
             icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/github.svg"
         },
@@ -408,6 +414,7 @@ function overwriteProxyGroups(params) {
             interval: 120,
             tolerance: 20,
             url: "http://youtube.com",
+            lazy: false,
             proxies: allProxies,
             icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/youtube.svg"
         },
@@ -415,6 +422,7 @@ function overwriteProxyGroups(params) {
             name: "TikTok",
             type: "select",
             url: "http://tiktok.com",
+            lazy: false,
             proxies: [proxyName, "HK - 自动选择", "TW - 自动选择", "SG - 自动选择", "KR - 自动选择", "JP - 自动选择", "US - 自动选择", "其它 - 自动选择", "HK - 手工选择", "TW - 手工选择", "SG - 手工选择", "KR - 手工选择", "JP - 手工选择", "US - 手工选择"],
             icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/tiktok.svg"
         },
@@ -424,6 +432,7 @@ function overwriteProxyGroups(params) {
             interval: 300,
             tolerance: 50,
             url: "http://claude.ai",
+            lazy: false,
             // proxies: [proxyName, "HK - 自动选择", "TW - 自动选择", "SG - 自动选择", "KR - 自动选择", "JP - 自动选择", "US - 自动选择", "其它 - 自动选择", "HK - 手工选择", "TW - 手工选择", "SG - 手工选择", "KR - 手工选择", "JP - 手工选择", "US - 手工选择"],
             proxies: [...allProxies],
             // "include-all": true,
