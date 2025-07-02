@@ -44,7 +44,7 @@ function overwriteRules(params) {
         "RULE-SET,reddit,Reddit,no-resolve",
         "RULE-SET,tiktok,TikTok,no-resolve",
         "RULE-SET,telegramcidr,电报消息,no-resolve",
-        `RULE-SET,tld-not-cn,${proxyName},no-resolve`,
+        `RULE-SET,tldnotcn,${proxyName},no-resolve`,
         `RULE-SET,google,${proxyName},no-resolve`,
         `RULE-SET,icloud,${proxyName},no-resolve`,
         `RULE-SET,apple,${proxyName},no-resolve`,
