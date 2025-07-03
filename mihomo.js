@@ -37,7 +37,7 @@ function overwriteRules(params) {
         //"RULE-SET,applications,DIRECT",
         "RULE-SET,openai,ChatGPT,no-resolve",
         "RULE-SET,claude,Claude,no-resolve",
-        "RULE-SET,youtube,YouTube,no-resolve",
+        // "RULE-SET,youtube,YouTube,no-resolve",
         "RULE-SET,github,GitHub,no-resolve",
         "RULE-SET,spotify,Spotify,no-resolve",
         "RULE-SET,speedtest,Speedtest,no-resolve",
@@ -408,16 +408,16 @@ function overwriteProxyGroups(params) {
             proxies: allProxies,
             icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/github.svg"
         },
-        {
-            name: "YouTube",
-            type: "url-test",
-            interval: 600,
-            tolerance: 20,
-            url: "http://youtube.com",
-            lazy: false,
-            proxies: allProxies,
-            icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/youtube.svg"
-        },
+        // {
+        //     name: "YouTube",
+        //     type: "url-test",
+        //     interval: 600,
+        //     tolerance: 20,
+        //     url: "http://youtube.com",
+        //     lazy: false,
+        //     proxies: allProxies,
+        //     icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/youtube.svg"
+        // },
         {
             name: "TikTok",
             type: "select",
