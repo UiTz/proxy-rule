@@ -1,4 +1,4 @@
 payload:
   - DOMAIN-SUFFIX,mushroomtrack.com
-  - SRC-IP-CIDR,172.17.0.0/24
+  - SRC-IP-CIDR,172.17.0.4/32
   - DOMAIN-SUFFIX,ipa.store
