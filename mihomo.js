@@ -166,7 +166,7 @@ function overwriteRules(params) {
         speedtest: {
             type: "http",
             behavior: "classical",
-            url: `${githubProxy}https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/speedtest.mrs`,
+            url: `${githubProxy}https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Speedtest/Speedtest.yaml`,
             path: "./ruleset/custom/speedtest.yaml",
         },
         openai: {
