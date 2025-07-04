@@ -1,4 +1,5 @@
-DOMAIN-SUFFIX,mushroomtrack.com
-SRC-IP-CIDR,172.17.0.0/24
-DOMAIN-SUFFIX,ipa.store
-DOMAIN, github.vuitz.cc
+payload:
+  - DOMAIN-SUFFIX,mushroomtrack.com
+  - SRC-IP-CIDR,172.17.0.0/24
+  - DOMAIN-SUFFIX,ipa.store
+  - DOMAIN, github.vuitz.cc
