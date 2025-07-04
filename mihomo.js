@@ -293,6 +293,7 @@ function overwriteProxyGroups(params) {
                 "手动选择",
                 "🔀负载均衡(散列)",
                 "🔁负载均衡(轮询)",
+                ...autoProxyGroups.map((item) => item.name),
                 "DIRECT",
             ],
         },
@@ -304,9 +305,13 @@ function overwriteProxyGroups(params) {
         },
         {
             name: "自动选择",
-            type: "select",
             icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Auto.png",
-            proxies: ["ALL - 自动选择"],
+            type: "url-test",
+            url: "http://www.google.com/generate_204",
+            interval: 120,
+            tolerance: 20,
+            proxies: allProxies,
+            hidden: true,
         },
         {
             name: "🔀负载均衡(散列)",
@@ -329,15 +334,6 @@ function overwriteProxyGroups(params) {
             strategy: "round-robin",
             lazy: true,
             proxies: allProxies,
-        },
-        {
-            name: "ALL - 自动选择",
-            type: "url-test",
-            url: "http://www.google.com/generate_204",
-            interval: 120,
-            tolerance: 20,
-            proxies: allProxies,
-            hidden: true,
         },
         {
             name: "自定义代理组 1",
@@ -472,8 +468,8 @@ function overwriteProxyGroups(params) {
         },
     ];
 
-    autoProxyGroups.length &&
-        groups[2].proxies.push(...autoProxyGroups.map((item) => item.name));
+    //autoProxyGroups.length &&
+        //groups[2].proxies.push(...autoProxyGroups.map((item) => item.name));
     groups.push(...autoProxyGroups);
     groups.push(...manualProxyGroupsConfig);
     params["proxy-groups"] = groups;
