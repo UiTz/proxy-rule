@@ -30,7 +30,6 @@ function overwriteRules(params) {
 
     const rules = [
         ...customRules,
-        "RULE-SET,direct,DIRECT,no-resolve",
         "RULE-SET,myDirect,DIRECT,no-resolve",
         "RULE-SET,cncidr,DIRECT,no-resolve",
         "RULE-SET,private,DIRECT,no-resolve",
@@ -54,6 +53,7 @@ function overwriteRules(params) {
         `RULE-SET,proxy,${proxyName},no-resolve`,
         "RULE-SET,reject, ⛔广告拦截,no-resolve",
         "RULE-SET,Advertising, ⛔广告拦截,no-resolve",
+        "RULE-SET,direct,DIRECT,no-resolve",
         "GEOIP,LAN,DIRECT,no-resolve",
         "GEOIP,CN,DIRECT,no-resolve",
         "MATCH, 🐟漏网之鱼",
