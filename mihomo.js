@@ -36,6 +36,7 @@ function overwriteRules(params) {
         "RULE-SET,lancidr,DIRECT,no-resolve",
         //"RULE-SET,applications,DIRECT",
         "RULE-SET,openai,ChatGPT,no-resolve",
+        "RULE-SET,metaAi,MetaAI,no-resolve",
         "RULE-SET,claude,Claude,no-resolve",
         // "RULE-SET,youtube,YouTube,no-resolve",
         "RULE-SET,github,GitHub,no-resolve",
@@ -156,6 +157,12 @@ function overwriteRules(params) {
             behavior: "classical",
             url: `${githubProxy}https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Spotify/Spotify.yaml`,
             path: "./ruleset/custom/Spotify.yaml",
+        },
+        metaAi: {
+            type: "http",
+            behavior: "domain",
+            url: `${githubProxy}https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/MetaAi.list`,
+            path: "./ruleset/custom/metaAi.list",
         },
         reddit: {
             type: "http",
@@ -309,7 +316,7 @@ function overwriteProxyGroups(params) {
             type: "url-test",
             url: "http://www.google.com/generate_204",
             interval: 120,
-            tolerance: 20,
+            tolerance: 10,
             proxies: allProxies,
             hidden: true,
         },
@@ -406,6 +413,15 @@ function overwriteProxyGroups(params) {
             proxies: [...GPTProxyRegex],
             // "include-all": true,
             icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/chatgpt.svg"
+        },
+        {
+            name: "MetaAI",
+            type: "select",
+            interval: 600,
+            url: "http://meta.ai",
+            lazy: false,
+            proxies: [...GPTProxyRegex],
+            icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMTcxIiB2aWV3Qm94PSIwIDAgMjU2IDE3MSI+Cgk8ZGVmcz4KCQk8bGluZWFyR3JhZGllbnQgaWQ9ImxvZ29zTWV0YUljb24wIiB4MT0iMTMuODc4JSIgeDI9Ijg5LjE0NCUiIHkxPSI1NS45MzQlIiB5Mj0iNTguNjk0JSI+CgkJCTxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwMDY0ZTEiIC8+CgkJCTxzdG9wIG9mZnNldD0iNDAlIiBzdG9wLWNvbG9yPSIjMDA2NGUxIiAvPgoJCQk8c3RvcCBvZmZzZXQ9IjgzJSIgc3RvcC1jb2xvcj0iIzAwNzNlZSIgLz4KCQkJPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDA4MmZiIiAvPgoJCTwvbGluZWFyR3JhZGllbnQ+CgkJPGxpbmVhckdyYWRpZW50IGlkPSJsb2dvc01ldGFJY29uMSIgeDE9IjU0LjMxNSUiIHgyPSI1NC4zMTUlIiB5MT0iODIuNzgyJSIgeTI9IjM5LjMwNyUiPgoJCQk8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMDA4MmZiIiAvPgoJCQk8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDY0ZTAiIC8+CgkJPC9saW5lYXJHcmFkaWVudD4KCTwvZGVmcz4KCTxwYXRoIGZpbGw9IiMwMDgxZmIiIGQ9Ik0yNy42NTEgMTEyLjEzNmMwIDkuNzc1IDIuMTQ2IDE3LjI4IDQuOTUgMjEuODJjMy42NzcgNS45NDcgOS4xNiA4LjQ2NiAxNC43NTEgOC40NjZjNy4yMTEgMCAxMy44MDgtMS43OSAyNi41Mi0xOS4zNzJjMTAuMTg1LTE0LjA5MiAyMi4xODYtMzMuODc0IDMwLjI2LTQ2LjI3NWwxMy42NzUtMjEuMDFjOS40OTktMTQuNTkxIDIwLjQ5My0zMC44MTEgMzMuMS00MS44MDZDMTYxLjE5NiA0Ljk4NSAxNzIuMjk4IDAgMTgzLjQ3IDBjMTguNzU4IDAgMzYuNjI1IDEwLjg3IDUwLjMgMzEuMjU3QzI0OC43MzUgNTMuNTg0IDI1NiA4MS43MDcgMjU2IDExMC43MjljMCAxNy4yNTMtMy40IDI5LjkzLTkuMTg3IDM5Ljk0NmMtNS41OTEgOS42ODYtMTYuNDg4IDE5LjM2My0zNC44MTggMTkuMzYzdi0yNy42MTZjMTUuNjk1IDAgMTkuNjEyLTE0LjQyMiAxOS42MTItMzAuOTI3YzAtMjMuNTItNS40ODQtNDkuNjIzLTE3LjU2NC02OC4yNzNjLTguNTc0LTEzLjIzLTE5LjY4NC0yMS4zMTMtMzEuOTA3LTIxLjMxM2MtMTMuMjIgMC0yMy44NTkgOS45Ny0zNS44MTUgMjcuNzVjLTYuMzU2IDkuNDQ1LTEyLjg4MiAyMC45NTYtMjAuMjA4IDMzLjk0NGwtOC4wNjYgMTQuMjg5Yy0xNi4yMDMgMjguNzI4LTIwLjMwNyAzNS4yNzEtMjguNDA4IDQ2LjA3Yy0xNC4yIDE4LjkxLTI2LjMyNCAyNi4wNzYtNDIuMjg3IDI2LjA3NmMtMTguOTM1IDAtMzAuOTEtOC4yLTM4LjMyNS0yMC41NTZDMi45NzMgMTM5LjQxMyAwIDEyNi4yMDIgMCAxMTEuMTQ4eiIgLz4KCTxwYXRoIGZpbGw9InVybCgjbG9nb3NNZXRhSWNvbjApIiBkPSJNMjEuODAyIDMzLjIwNkMzNC40OCAxMy42NjYgNTIuNzc0IDAgNzMuNzU3IDBDODUuOTEgMCA5Ny45OSAzLjU5NyAxMTAuNjA1IDEzLjg5N2MxMy43OTggMTEuMjYxIDI4LjUwNSAyOS44MDUgNDYuODUzIDYwLjM2OGw2LjU4IDEwLjk2N2MxNS44ODEgMjYuNDU5IDI0LjkxNyA0MC4wNyAzMC4yMDUgNDYuNDljNi44MDIgOC4yNDMgMTEuNTY1IDEwLjcgMTcuNzUyIDEwLjdjMTUuNjk1IDAgMTkuNjEyLTE0LjQyMiAxOS42MTItMzAuOTI3bDI0LjM5My0uNzY2YzAgMTcuMjUzLTMuNCAyOS45My05LjE4NyAzOS45NDZjLTUuNTkxIDkuNjg2LTE2LjQ4OCAxOS4zNjMtMzQuODE4IDE5LjM2M2MtMTEuMzk1IDAtMjEuNDktMi40NzUtMzIuNjU0LTEzLjAwN2MtOC41ODItOC4wODMtMTguNjE1LTIyLjQ0My0yNi4zMzQtMzUuMzUybC0yMi45Ni0zOC4zNTJDMTE4LjUyOCA2NC4wOCAxMDcuOTYgNDkuNzMgMTAxLjg0NSA0My4yM2MtNi41NzgtNi45ODgtMTUuMDM2LTE1LjQyOC0yOC41MzItMTUuNDI4Yy0xMC45MjMgMC0yMC4yIDcuNjY2LTI3Ljk2MyAxOS4zOXoiIC8+Cgk8cGF0aCBmaWxsPSJ1cmwoI2xvZ29zTWV0YUljb24xKSIgZD0iTTczLjMxMiAyNy44MDJjLTEwLjkyMyAwLTIwLjIgNy42NjYtMjcuOTYzIDE5LjM5Yy0xMC45NzYgMTYuNTY4LTE3LjY5OCA0MS4yNDUtMTcuNjk4IDY0Ljk0NGMwIDkuNzc1IDIuMTQ2IDE3LjI4IDQuOTUgMjEuODJMOS4wMjcgMTQ5LjQ4MkMyLjk3MyAxMzkuNDEzIDAgMTI2LjIwMiAwIDExMS4xNDhDMCA4My43NzIgNy41MTQgNTUuMjQgMjEuODAyIDMzLjIwNkMzNC40OCAxMy42NjYgNTIuNzc0IDAgNzMuNzU3IDB6IiAvPgo8L3N2Zz4="
         },
         {
             name: "GitHub",
