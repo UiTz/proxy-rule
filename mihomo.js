@@ -159,10 +159,9 @@ function overwriteRules(params) {
             path: "./ruleset/custom/Spotify.yaml",
         },
         metaAi: {
-            type: "http",
-            behavior: "domain",
+            ...domainRules,
             url: `${githubProxy}https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/MetaAi.list`,
-            path: "./ruleset/custom/metaAi.list",
+            path: "./ruleset/custom/metaAi.yaml",
         },
         reddit: {
             type: "http",
