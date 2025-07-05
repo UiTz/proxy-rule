@@ -160,8 +160,9 @@ function overwriteRules(params) {
         },
         metaAi: {
             ...domainRules,
+            format: "text",
             url: `${githubProxy}https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/MetaAi.list`,
-            path: "./ruleset/custom/metaAi.yaml",
+            path: "./ruleset/custom/metaAi.list",
         },
         reddit: {
             type: "http",
