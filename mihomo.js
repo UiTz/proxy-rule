@@ -458,8 +458,8 @@ function overwriteProxyGroups(params) {
             tolerance: 50,
             url: "http://claude.ai",
             lazy: false,
-            // proxies: [proxyName, "HK - 自动选择", "TW - 自动选择", "SG - 自动选择", "KR - 自动选择", "JP - 自动选择", "US - 自动选择", "其它 - 自动选择", "HK - 手工选择", "TW - 手工选择", "SG - 手工选择", "KR - 手工选择", "JP - 手工选择", "US - 手工选择"],
-            proxies: [...allProxies],
+            // 过滤掉包含“香港”或“HK”或“Hong”或“🇭🇰”的节点
+            proxies: allProxies.filter(name => !/香港|HK|Hong|🇭🇰/i.test(name)),
             // "include-all": true,
             icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/claude.svg"
         },
