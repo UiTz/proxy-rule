@@ -59,7 +59,7 @@ function overwriteRules(params) {
         "GEOIP,CN,DIRECT,no-resolve",
         "MATCH, 🐟漏网之鱼",
     ];
-    const domainRules = { type: "http", behavior: "domain", interval: 86400 };
+    const domainRules = { type: "http", behavior: "domain", interval: 21600 };
 
     const githubProxy = "https://github.vuitz.cc/";
 
@@ -211,9 +211,9 @@ function overwriteRules(params) {
     // 注入缓存校验机制函数
     function injectCacheControl(ruleProviders) {
         Object.entries(ruleProviders).forEach(([key, rule]) => {
-            // 优先保留已有 interval，否则默认 86400
+            // 优先保留已有 interval，否则默认 21600 (6小时)
             if (typeof rule.interval === "undefined") {
-                rule.interval = 86400;
+                rule.interval = 21600;
             }
             // 加上 etag 以启用缓存验证（Clash.Meta 支持）
             if (typeof rule.etag === "undefined") {
@@ -288,6 +288,15 @@ function overwriteProxyGroups(params) {
 
     // const GPTProxyRegex = getProxiesByRegex(params, /^(?!.*?(香港|HK|Hong|🇭🇰)).*$/)
     const GPTProxyRegex = getProxiesByRegex(params, /GPT/)
+    
+    // 定义常用代理组合
+    const commonProxyGroups = [
+        proxyName, 
+        "HK - 自动选择", "TW - 自动选择", "SG - 自动选择", 
+        "KR - 自动选择", "JP - 自动选择", "US - 自动选择", "其它 - 自动选择",
+        "HK - 手工选择", "TW - 手工选择", "SG - 手工选择", 
+        "KR - 手工选择", "JP - 手工选择", "US - 手工选择"
+    ];
 
     const groups = [
         {
@@ -345,22 +354,21 @@ function overwriteProxyGroups(params) {
         {
             name: "自定义代理组 1",
             type: "select",
-            proxies: [proxyName, "HK - 自动选择", "TW - 自动选择", "SG - 自动选择", "KR - 自动选择", "JP - 自动选择", "US - 自动选择", "其它 - 自动选择", "HK - 手工选择", "TW - 手工选择", "SG - 手工选择", "KR - 手工选择", "JP - 手工选择", "US - 手工选择"],
+            proxies: commonProxyGroups,
             "include-all": true,
             icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/ambulance.svg"
         },
         {
             name: "自定义代理组 2",
             type: "select",
-            proxies: [proxyName, "HK - 自动选择", "TW - 自动选择", "SG - 自动选择", "KR - 自动选择", "JP - 自动选择", "US - 自动选择", "其它 - 自动选择", "HK - 手工选择", "TW - 手工选择", "SG - 手工选择", "KR - 手工选择", "JP - 手工选择", "US - 手工选择"],
+            proxies: commonProxyGroups,
             "include-all": true,
             icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/ambulance.svg"
         },
         {
             name: "电报消息",
             type: "select",
-            proxies: [proxyName, "HK - 自动选择", "TW - 自动选择", "SG - 自动选择", "KR - 自动选择", "JP - 自动选择", "US - 自动选择", "其它 - 自动选择", "HK - 手工选择", "TW - 手工选择", "SG - 手工选择", "KR - 手工选择", "JP - 手工选择", "US - 手工选择"],
-            // "include-all": true,
+            proxies: commonProxyGroups,
             icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/telegram.svg"
         },
         {
@@ -448,7 +456,7 @@ function overwriteProxyGroups(params) {
             type: "select",
             url: "http://tiktok.com",
             lazy: false,
-            proxies: [proxyName, "HK - 自动选择", "TW - 自动选择", "SG - 自动选择", "KR - 自动选择", "JP - 自动选择", "US - 自动选择", "其它 - 自动选择", "HK - 手工选择", "TW - 手工选择", "SG - 手工选择", "KR - 手工选择", "JP - 手工选择", "US - 手工选择"],
+            proxies: commonProxyGroups,
             icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/tiktok.svg"
         },
         {
@@ -466,8 +474,7 @@ function overwriteProxyGroups(params) {
         {
             name: "Spotify",
             type: "select",
-            proxies: [proxyName, "HK - 自动选择", "TW - 自动选择", "SG - 自动选择", "KR - 自动选择", "JP - 自动选择", "US - 自动选择", "其它 - 自动选择", "HK - 手工选择", "TW - 手工选择", "SG - 手工选择", "KR - 手工选择", "JP - 手工选择", "US - 手工选择"],
-            // "include-all": true,
+            proxies: commonProxyGroups,
             icon: "https://storage.googleapis.com/spotifynewsroom-jp.appspot.com/1/2020/12/Spotify_Icon_CMYK_Green.png"
         },
         {
