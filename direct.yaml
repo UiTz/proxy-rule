@@ -1,7 +1,7 @@
 payload:
-  - DOMAIN-SUFFIX,mushroomtrack.com
   - SRC-IP-CIDR,172.17.0.0/24
+  - DOMAIN-SUFFIX,mushroomtrack.com
   - DOMAIN-SUFFIX,ipa.store
-  - DOMAIN-SUFFIX,anywlan.com
+  - DOMAIN,anywlan.com
   - DOMAIN,github.vuitz.cc
-  - DOMAIN,anyrouter.topo
+  - DOMAIN,anyrouter.top

@@ -560,8 +560,7 @@ function overwriteDns(params) {
             "geosite:google",
             "geosite:apple",
             "+.uitz.cc",
-            "anyrouter.top",
-            "anywlan.com"
+            "anyrouter.top"
         ],
     };
 
