@@ -542,7 +542,7 @@ function overwriteDns(params) {
             "geosite:apple",
             "+.uitz.cc",
             "anyrouter.top",
-            "+.anywlan.com"
+            "anywlan.com"
         ],
     };
 
