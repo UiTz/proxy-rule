@@ -2,6 +2,5 @@ payload:
   - SRC-IP-CIDR,172.17.0.0/24
   - DOMAIN-SUFFIX,mushroomtrack.com
   - DOMAIN-SUFFIX,ipa.store
-  - DOMAIN,anywlan.com
   - DOMAIN,github.vuitz.cc
   - DOMAIN,anyrouter.top
