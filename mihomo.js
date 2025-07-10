@@ -39,6 +39,7 @@ function overwriteRules(params) {
         "RULE-SET,openai,ChatGPT,no-resolve",
         "RULE-SET,metaAi,MetaAI,no-resolve",
         "RULE-SET,claude,Claude,no-resolve",
+        "RULE-SET,gemini,Gemini,no-resolve",
         // "RULE-SET,youtube,YouTube,no-resolve",
         "RULE-SET,github,GitHub,no-resolve",
         "RULE-SET,spotify,Spotify,no-resolve",
@@ -199,6 +200,12 @@ function overwriteRules(params) {
             behavior: "classical",
             url: `${githubProxy}https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Claude/Claude.yaml`,
             path: "./ruleset/custom/Claude.yaml",
+        },
+        gemini: {
+            type: "http",
+            behavior: "classical",
+            url: `${githubProxy}https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Gemini/Gemini.yaml`,
+            path: "./ruleset/custom/Gemini.yaml",
         },
         applications: {
             type: "http",
@@ -470,6 +477,18 @@ function overwriteProxyGroups(params) {
             proxies: allProxies.filter(name => !/香港|HK|Hong|🇭🇰/i.test(name)),
             // "include-all": true,
             icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/claude.svg"
+        },
+        {
+            name: "Gemini",
+            type: "url-test",
+            interval: 600,
+            tolerance: 50,
+            url: "http://gemini.google.com",
+            lazy: false,
+            // 过滤掉包含"香港"或"HK"或"Hong"或"🇭🇰"的节点
+            proxies: allProxies.filter(name => !/香港|HK|Hong|🇭🇰/i.test(name)),
+            // "include-all": true,
+            icon: "https://www.gstatic.com/lamda/images/gemini_sparkle_v002_d4735304ff6292a690345.svg"
         },
         {
             name: "Spotify",
