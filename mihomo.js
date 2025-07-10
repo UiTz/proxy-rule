@@ -540,7 +540,7 @@ function overwriteDns(params) {
             "geoip:cn",
             "geosite:google",
             "geosite:apple",
-            "*.uitz.cc",
+            "+.uitz.cc",
             "anyrouter.top",
             "+.anywlan.com"
         ],
