@@ -555,6 +555,8 @@ function overwriteDns(params) {
             domain: ["+.google.com", "+.facebook.com", "+.youtube.com", "+.twitter.com", "+.github.com"],
         },
         "fake-ip-filter": [
+            "+.lan",
+            "+.local",
             "geosite:cn",
             "geoip:cn",
             "geosite:google",
