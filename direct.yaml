@@ -3,4 +3,4 @@ payload:
   - DOMAIN-SUFFIX,mushroomtrack.com
   - DOMAIN-SUFFIX,ipa.store
   - DOMAIN,github.vuitz.cc
-  - DOMAIN,anyrouter.top
+  #- DOMAIN,anyrouter.top
