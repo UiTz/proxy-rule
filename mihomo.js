@@ -261,6 +261,17 @@ function overwriteProxyGroups(params) {
         { name: "其它 - 自动选择", regex: /(?!.*(?: 剩余 | 到期 | 主页 | 官网 | 游戏 | 关注))(.*)/ },
     ];
 
+    // Smart 策略组，按地区分组智能选择
+    const smartProxyGroupRegexs = [
+        { name: "HK - 智能选择", regex: / 香港 | HK|Hong|🇭🇰/ },
+        { name: "TW - 智能选择", regex: / 台湾 | TW|Taiwan|Wan|🇨🇳|🇹🇼/ },
+        { name: "SG - 智能选择", regex: / 新加坡 | 狮城 | SG|Singapore|🇸🇬/ },
+        { name: "JP - 智能选择", regex: / 日本 | JP|Japan|🇯🇵/ },
+        { name: "KR - 智能选择", regex: / 韩国 | KR|Korea|🇰🇷/ },
+        { name: "US - 智能选择", regex: / 美国 | US|United States|America|🇺🇸/ },
+        { name: "其它 - 智能选择", regex: /(?!.*(?: 剩余 | 到期 | 主页 | 官网 | 游戏 | 关注))(.*)/ },
+    ];
+
     const autoProxyGroups = autoProxyGroupRegexs
         .map((item) => ({
             name: item.name,
@@ -268,6 +279,21 @@ function overwriteProxyGroups(params) {
             url: "http://www.google.com/generate_204",
             interval: 300,
             tolerance: 50,
+            proxies: getProxiesByRegex(params, item.regex),
+            hidden: false,
+        }))
+        .filter((item) => item.proxies.length > 0);
+
+    // Smart 策略组配置
+    const smartProxyGroups = smartProxyGroupRegexs
+        .map((item) => ({
+            name: item.name,
+            type: "smart",
+            url: "http://www.google.com/generate_204",
+            interval: 300,
+            tolerance: 100,
+            "max-failed-times": 3,
+            lazy: true,
             proxies: getProxiesByRegex(params, item.regex),
             hidden: false,
         }))
@@ -301,6 +327,8 @@ function overwriteProxyGroups(params) {
         proxyName, 
         "HK - 自动选择", "TW - 自动选择", "SG - 自动选择", 
         "KR - 自动选择", "JP - 自动选择", "US - 自动选择", "其它 - 自动选择",
+        "HK - 智能选择", "TW - 智能选择", "SG - 智能选择", 
+        "KR - 智能选择", "JP - 智能选择", "US - 智能选择", "其它 - 智能选择",
         "HK - 手工选择", "TW - 手工选择", "SG - 手工选择", 
         "KR - 手工选择", "JP - 手工选择", "US - 手工选择"
     ];
@@ -313,10 +341,12 @@ function overwriteProxyGroups(params) {
             icon: "https://raw.githubusercontent.com/fmz200/wool_scripts/main/icons/Twoandz9/Xray.png",
             proxies: [
                 "自动选择",
+                "智能选择",
                 "手动选择",
                 "🔀负载均衡(散列)",
                 "🔁负载均衡(轮询)",
                 ...autoProxyGroups.map((item) => item.name),
+                ...smartProxyGroups.map((item) => item.name),
                 "DIRECT",
             ],
         },
@@ -333,6 +363,18 @@ function overwriteProxyGroups(params) {
             url: "http://www.google.com/generate_204",
             interval: 120,
             tolerance: 10,
+            proxies: allProxies,
+            hidden: true,
+        },
+        {
+            name: "智能选择",
+            icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Rocket.png",
+            type: "smart",
+            url: "http://www.google.com/generate_204",
+            interval: 300,
+            tolerance: 100,
+            "max-failed-times": 3,
+            lazy: true,
             proxies: allProxies,
             hidden: true,
         },
@@ -513,6 +555,7 @@ function overwriteProxyGroups(params) {
     //autoProxyGroups.length &&
         //groups[2].proxies.push(...autoProxyGroups.map((item) => item.name));
     groups.push(...autoProxyGroups);
+    groups.push(...smartProxyGroups);
     groups.push(...manualProxyGroupsConfig);
     params["proxy-groups"] = groups;
 
