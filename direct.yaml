@@ -4,3 +4,4 @@ payload:
   - DOMAIN-SUFFIX,ipa.store
   - DOMAIN,github.vuitz.cc
   #- DOMAIN,anyrouter.top
+  - DOMAIN-SUFFIX,rainapp.top
