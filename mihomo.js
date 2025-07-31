@@ -289,11 +289,16 @@ function overwriteProxyGroups(params) {
         .map((item) => ({
             name: item.name,
             type: "smart",
-            url: "http://www.google.com/generate_204",
-            interval: 300,
-            tolerance: 100,
-            "max-failed-times": 3,
-            lazy: true,
+            uselightgbm: true,
+            collectdata: true,
+            "health-check": {
+                enable: true,
+                url: "https://www.gstatic.com/generate_204",
+                interval: 60,
+                tolerance: 2
+            },
+            strategy: "sticky-sessions",
+            lazy: false,
             proxies: getProxiesByRegex(params, item.regex),
             hidden: false,
         }))
@@ -370,13 +375,17 @@ function overwriteProxyGroups(params) {
             name: "智能选择",
             icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Rocket.png",
             type: "smart",
-            url: "http://www.google.com/generate_204",
-            interval: 300,
-            tolerance: 100,
-            "max-failed-times": 3,
-            lazy: true,
+            uselightgbm: true,
+            collectdata: true,
+            "health-check": {
+              enable: true,
+              url: "https://www.gstatic.com/generate_204",
+              interval: 60,
+              tolerance: 2
+            },
+            strategy: "sticky-sessions",
+            lazy: false,
             proxies: allProxies,
-            hidden: true,
         },
         {
             name: "🔀负载均衡(散列)",
