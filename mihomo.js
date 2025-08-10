@@ -35,6 +35,7 @@ function overwriteRules(params) {
         "RULE-SET,private,DIRECT,no-resolve",
         "RULE-SET,lancidr,DIRECT,no-resolve",
         `RULE-SET,icloud,DIRECT,no-resolve`,
+        `RULE-SET,apple,DIRECT,no-resolve`,
         //"RULE-SET,applications,DIRECT",
         "RULE-SET,openai,ChatGPT,no-resolve",
         "RULE-SET,metaAi,MetaAI,no-resolve",
