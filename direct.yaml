@@ -5,3 +5,5 @@ payload:
   - DOMAIN,github.vuitz.cc
   #- DOMAIN,anyrouter.top
   - DOMAIN-SUFFIX,rainapp.top
+  - DOMAIN-SUFFIX,swdcmg.com
+  - DOMAIN-SUFFIX,rustdesk.com
