@@ -25,6 +25,7 @@ function overwriteRules(params) {
         "DOMAIN-SUFFIX,xiaohongshu.com,小红书",
         "DOMAIN-SUFFIX,douyinvod.com,抖音",
         "DOMAIN-SUFFIX,amemv.com,抖音",
+        "DOMAIN-SUFFIX,swdcmg.com,DIRECT",
     ];
 
 
