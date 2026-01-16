@@ -64,7 +64,7 @@ function overwriteRules(params) {
     ];
     const domainRules = { type: "http", behavior: "domain", interval: 21600 };
 
-    const githubProxy = "https://github.vuitz.cc/";
+    const githubProxy = "https://github.uitz.pro/";
 
     const ruleProviders = {
         reject: {
@@ -622,7 +622,7 @@ function overwriteDns(params) {
     };
 
     // GitHub 加速前缀
-    const githubPrefix = "https://github.vuitz.cc/";
+    const githubPrefix = "https://github.uitz.pro/";
     // const githubPrefix = "";
 
     // GEO 数据 GitHub 资源原始下载地址
