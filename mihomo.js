@@ -390,6 +390,17 @@ function overwriteProxyGroups(params) {
             proxies: allProxies,
         },
         {
+            name: "回家节点",
+            type: "select",
+            proxies: [
+                {
+                    "name": "BackHome",
+                    "type": "url",
+                    "url": "https://sub.uitz.pro/d33skXDsLRVsZqF0mTWM/download/home?target=ClashMeta"
+                }
+            ]
+        },
+        {
             name: "🔀负载均衡(散列)",
             type: "load-balance",
             url: "http://www.google.com/generate_204",
