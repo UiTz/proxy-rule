@@ -392,13 +392,7 @@ function overwriteProxyGroups(params) {
         {
             name: "回家节点",
             type: "select",
-            proxies: [
-                {
-                    "name": "BackHome",
-                    "type": "url",
-                    "url": "https://sub.uitz.pro/d33skXDsLRVsZqF0mTWM/download/home?target=JSON"
-                }
-            ]
+            proxies: ["https://sub.uitz.pro/d33skXDsLRVsZqF0mTWM/download/home?target=ClashMeta"]
         },
         {
             name: "🔀负载均衡(散列)",
