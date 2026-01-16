@@ -248,7 +248,7 @@ function overwriteProxyGroups(params) {
     // 添加自用代理
     params.proxies.push(
         //  { name: '1 - 香港 - 示例 ', type: *, server: **, port: *, cipher: **, password: **, udp: true }
-
+        {"name":"Home–Socks","server":"home.uitz.cc","port":9811,"username":" uitz","password":"@Lqjxxb8","udp":true,"type":"socks5"}
     );
 
     // 所有代理
@@ -362,8 +362,7 @@ function overwriteProxyGroups(params) {
       //}
     };
     // ↑↑↑ 用户配置区域 (订阅二) ↑↑↑
-    params['proxy-providers']['订阅二'] = providerTwoConfig; // 覆盖 '订阅二'
-    console.log("JS 覆写：已覆盖 '订阅二'。");
+    //params['proxy-providers']['订阅二'] = providerTwoConfig; // 覆盖 '订阅二'
 
     const groups = [
         {
@@ -419,7 +418,7 @@ function overwriteProxyGroups(params) {
             icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Back.png",
             type: "select",
             proxies: [
-                "回家节点"
+                "Home–Socks"
             ]
         },
         {
