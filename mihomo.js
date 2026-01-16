@@ -341,6 +341,30 @@ function overwriteProxyGroups(params) {
         "KR - 手工选择", "JP - 手工选择", "US - 手工选择"
     ];
 
+      // --- 覆盖 '订阅二' ---
+    // 如果你只使用一个订阅，可以注释或删除以下 '订阅二' 部分。
+    // ↓↓↓ 用户配置区域 (订阅二) ↓↓↓
+    const providerTwoConfig = {
+      type: 'http',
+      interval: 3600,
+      'health-check': {
+          enable: true,
+          url: 'https://cp.cloudflare.com',
+          interval: 300,
+          timeout: 1000,
+          tolerance: 100
+      },
+      // --- 你的订阅信息 (订阅二) ---
+      url: "https://sub.uitz.pro/d33skXDsLRVsZqF0mTWM/download/home?target=ClashMeta", // <--- (必需) 第二个机场订阅链接
+      path: "./proxy_provider/home.yaml", // <--- (必需) 缓存文件路径，与第一个不同
+      //override: {
+      //    'additional-prefix': "[机场二]" // (可选) 添加节点名称前缀
+      //}
+    };
+    // ↑↑↑ 用户配置区域 (订阅二) ↑↑↑
+    params['proxy-providers']['订阅二'] = providerTwoConfig; // 覆盖 '订阅二'
+    console.log("JS 覆写：已覆盖 '订阅二'。");
+
     const groups = [
         {
             name: proxyName,
@@ -395,7 +419,7 @@ function overwriteProxyGroups(params) {
             icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Back.png",
             type: "select",
             proxies: [
-                {"name":"🇨🇳Home–Socks","server":"home.uitz.cc","port":9811,"username":" uitz","password":"@Lqjxxb8","udp":true,"type":"socks5"}
+                "回家节点"
             ]
         },
         {
