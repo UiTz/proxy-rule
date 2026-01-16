@@ -26,6 +26,7 @@ function overwriteRules(params) {
         "DOMAIN-SUFFIX,douyinvod.com,抖音",
         "DOMAIN-SUFFIX,amemv.com,抖音",
         "DOMAIN-SUFFIX,swdcmg.com,DIRECT",
+        "IP-CIDR,10.0.0.0/24,回家节点"
     ];
 
 
@@ -391,8 +392,11 @@ function overwriteProxyGroups(params) {
         },
         {
             name: "回家节点",
+            icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Back.png",
             type: "select",
-            proxies: ["https://sub.uitz.pro/d33skXDsLRVsZqF0mTWM/download/home?target=ClashMeta"]
+            proxies: [
+                {"name":"🇨🇳Home–Socks","server":"home.uitz.cc","port":9811,"username":" uitz","password":"@Lqjxxb8","udp":true,"type":"socks5"}
+            ]
         },
         {
             name: "🔀负载均衡(散列)",
