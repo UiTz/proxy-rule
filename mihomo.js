@@ -396,7 +396,7 @@ function overwriteProxyGroups(params) {
                 {
                     "name": "BackHome",
                     "type": "url",
-                    "url": "https://sub.uitz.pro/d33skXDsLRVsZqF0mTWM/download/home?target=ClashMeta"
+                    "url": "https://sub.uitz.pro/d33skXDsLRVsZqF0mTWM/download/home?target=JSON"
                 }
             ]
         },
